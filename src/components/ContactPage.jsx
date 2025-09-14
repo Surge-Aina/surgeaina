@@ -115,7 +115,6 @@ export default function ContactPage() {
                   <ul className="space-y-4 text-lg ">
                     {[
                       "Expert guidance from industry professionals",
-                      "Lorem ipsum dolor sit amet",
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                       "Quick response to all enquiries",
                     ].map((t) => (
@@ -128,6 +127,24 @@ export default function ContactPage() {
                     ))}
                   </ul>
                 </div>
+                
+                
+              <br></br>
+                <li className="flex items-start">
+    <svg className="h-6 w-6 text-red-200 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+    <span>
+      <a 
+        href="https://www.linkedin.com/company/surgeaina/services/request-proposal/?viewAsMember=true" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-blue-200 hover:text-blue-100 underline transition-colors"
+      >
+        Connect with us on LinkedIn for updates
+      </a>
+    </span>
+  </li>
                 <div className="mt-8">
                   <h3 className="text-lg font-semibold mb-2">Need assistance?</h3>
                   <p className="text-red-50 mb-2">Call us at +1 15306365748</p>
