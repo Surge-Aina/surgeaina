@@ -9,10 +9,8 @@ const Home = () => {
       <nav className="relative z-50 bg-slate-800 text-white shadow-lg">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">S</span>
+            <div className="w-8 h-8 bg-slate 800  flex items-center justify-center">
             </div>
-            <span className="text-xl font-bold">SurgeAina</span>
           </div>
           <div className="hidden md:flex space-x-8">
            
@@ -83,18 +81,17 @@ const Home = () => {
           </h2>
           
           {/* Main Title */}
-          <h1 
-            className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8 font-inter bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent opacity-0"
-            style={{
-              animation: 'textReveal 1s ease-out 3.5s forwards'
-            }}
-          >
-            Surge Aina
-          </h1>
-          
+         <h1 
+  className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8 font-inter bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent opacity-0 leading-tight py-2"
+  style={{
+    animation: 'textReveal 1s ease-out 3.5s forwards'
+  }}
+>
+  Surge Aina
+</h1>
           {/* Bottom Border */}
           <div 
-            className="border-b-4 border-slate-600 w-full max-w-2xl mx-auto mb-8 opacity-0"
+            className="border-b-4 border-slate-600 w-full max-w-2xl mx-auto mb-20 opacity-0"
             style={{
               animation: 'textReveal 1s ease-out 3.5s forwards'
             }}

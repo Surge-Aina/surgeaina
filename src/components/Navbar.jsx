@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FaBrain, FaBars } from "react-icons/fa";
+import {  FaBars } from "react-icons/fa";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -17,10 +17,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Brand */}
           <div className="flex items-center gap-2">
-            <FaBrain className="text-3xl text-amber-50" />
-            <span className="text-xl font-bold">
-              Surge<span className="text-amber-50">Aina</span>
-            </span>
+          
           </div>
 
           {/* Desktop links */}

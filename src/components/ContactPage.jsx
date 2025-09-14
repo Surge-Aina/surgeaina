@@ -130,7 +130,7 @@ export default function ContactPage() {
                 </div>
                 <div className="mt-8">
                   <h3 className="text-lg font-semibold mb-2">Need assistance?</h3>
-                  <p className="text-red-50 mb-2">Call us at +1 xxx xxxxxxx</p>
+                  <p className="text-red-50 mb-2">Call us at +1 15306365748</p>
                   <p className="text-sm text-red-50">Our team is available 10AM - 6PM, Monday to Saturday</p>
                 </div>
               </div>
