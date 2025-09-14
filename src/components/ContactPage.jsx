@@ -115,8 +115,7 @@ export default function ContactPage() {
                   <ul className="space-y-4 text-lg ">
                     {[
                       "Expert guidance from industry professionals",
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                      "Quick response to all enquiries",
+              
                     ].map((t) => (
                       <li key={t} className="flex items-start">
                         <svg className="h-6 w-6 text-red-200 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -130,8 +129,24 @@ export default function ContactPage() {
                 
                 
               <br></br>
+              <li className="flex items-start">
+                      <svg className="h-6 w-6 text-red-200 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>
+                        <a 
+                          href="https://findvirtual.me" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-cyan-50 hover:text-white text-lg underline transition-colors"
+                        >
+                          Try our feature - FindVirtual.me
+                        </a>
+                      </span>
+                    </li>
+                    <br></br>
                 <li className="flex items-start">
-    <svg className="h-6 w-6 text-red-200 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+    <svg className="h-6 w-6 text-red-200  mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
     <span>
@@ -139,7 +154,7 @@ export default function ContactPage() {
         href="https://www.linkedin.com/company/surgeaina/services/request-proposal/?viewAsMember=true" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="text-blue-200 hover:text-blue-100 underline transition-colors"
+        className="text-cyan-50 hover:text-white text-lg underline transition-colors"
       >
         Connect with us on LinkedIn for updates
       </a>

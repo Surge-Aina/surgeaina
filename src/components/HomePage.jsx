@@ -38,12 +38,12 @@ const Home = () => {
       {/* Skip Animation Hint */}
       {!animationSkipped && (
         <div 
-          className="fixed top-20 right-4 z-50 bg-black bg-opacity-50 text-white px-3 py-2 rounded-lg text-sm opacity-0"
+          className="fixed top-20 right-4 "
           style={{
             animation: 'fadeIn 1s ease-out 1s forwards'
           }}
         >
-          Click anywhere to skip animation
+         
         </div>
       )}
 
@@ -150,7 +150,7 @@ const Home = () => {
             className={`bg-slate-900 hover:bg-gray-700 text-white px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 font-inter ${getAnimationClass()}`}
             style={getAnimationStyle('textReveal', 4)}
           >
-            Get Connected
+            Get Started
           </Link>
         </div>
       
