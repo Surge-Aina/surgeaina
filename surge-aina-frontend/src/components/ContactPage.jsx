@@ -115,7 +115,7 @@ export default function ContactPage() {
                   <ul className="space-y-4 text-lg ">
                     {[
                       "Expert guidance from industry professionals",
-                      "Lorem ipsum dolor sit amet",
+                      "Lorem ipsum dolor it amet",
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                       "Quick response to all enquiries",
                     ].map((t) => (
