@@ -187,7 +187,7 @@ export default function AboutPage() {
 
               <div>
                 <img
-                  src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+                  src="/public/about.png"
                   alt="AI neural network visualization"
                   className="w-full rounded-xl shadow-xl aspect-[16/10] object-cover"
                   loading="lazy"

@@ -135,7 +135,7 @@ export default function ContactPage() {
                       </svg>
                       <span>
                         <a 
-                          href="https://findvirtual.me" 
+                          href="https://www.findvirtual.me" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-cyan-50 hover:text-white text-lg underline transition-colors"
