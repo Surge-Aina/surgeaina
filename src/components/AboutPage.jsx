@@ -187,7 +187,7 @@ export default function AboutPage() {
 
               <div>
                 <img
-                  src="/public/about.png"
+                  src="public/about.png"
                   alt="AI neural network visualization"
                   className="w-full rounded-xl shadow-xl aspect-[16/10] object-cover"
                   loading="lazy"
