@@ -167,18 +167,18 @@ export default function AboutPage() {
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-8 font-inter">Our Story</h2>
                 <div>
-                  <p className="text-xl md:text-2xl leading-relaxed text-slate-700 font-inter font-medium mb-6">
+                  <p className="text-lg md:text-2xl leading-relaxed text-slate-700 font-inter font-medium mb-6">
                     Surge Aina is a purpose-driven tech company that empowers creators and 
                     professionals through innovative digital solutions.
                   </p>
 
-                  <p className="text-xl md:text-2xl leading-relaxed text-slate-700 font-inter font-medium mb-6">
+                  <p className="text-lg md:text-2xl leading-relaxed text-slate-700 font-inter font-medium mb-6">
                     Our latest creation, FindVirtual.me, is an intelligent platform that lets 
                     creators, designers, and professionals build stunning portfolio websites 
                     without any coding.
                   </p>
 
-                  <p className="text-xl md:text-2xl leading-relaxed text-slate-700 font-inter font-medium">
+                  <p className="text-lg md:text-2xl leading-relaxed text-slate-700 font-inter font-medium">
                     We believe in making a beautiful web presence accessible to everyone - 
                     because your creativity should not be limited by technical barriers.
                   </p>
