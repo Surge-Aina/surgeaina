@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Code, Smartphone, Zap, Cloud, Shield, TestTube } from 'lucide-react';
-import Navbar from './Navbar';
 import { Link } from "react-router-dom";
 
+import Navbar from './Navbar';
 export default function SolutionsPage(){
   // Enhanced services with icons and gradients
   const services = [
@@ -46,9 +46,9 @@ export default function SolutionsPage(){
 
   return(
     <>
-    <Navbar/>
+     <Navbar/>
       <div className="min-h-screen bg-gray-50 p-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl text-gray-900 mb-4">
               Professional Services
@@ -56,48 +56,45 @@ export default function SolutionsPage(){
             <p className="text-xl text-gray-600 mb-8">
               Get expert help for your next project
             </p>
-            {/* Your existing Link component */}
-             <Link
+          
+            <Link
                 to="/contact"
                 className="bg-slate-900 hover:bg-gray-700 text-white px-8 py-3 rounded-lg font-semibold font-inter transition-colors shadow-lg"
               >
-                Request a proposal
+            Request Proposals
               </Link>
           </div>
 
           {/* Enhanced Services List */}
-          <div className="space-y-6 mb-12">
+          <div className="space-y-4 mb-12">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
                 <div 
                   key={index} 
-                  className="group relative bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-gray-100"
+                  className="group relative bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-[1.01] border border-gray-100"
                 >
-                  <div className="flex items-start space-x-6">
+                  <div className="flex items-center space-x-4">
                     {/* Simple Icon */}
-                    <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center group-hover:bg-gray-200 transition-colors duration-300 flex-shrink-0">
-                      <Icon className="w-7 h-7 text-gray-600" />
+                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-gray-200 transition-colors duration-300 flex-shrink-0">
+                      <Icon className="w-6 h-6 text-gray-600" />
                     </div>
                     
                     <div className="flex-1">
                       {/* Service Title */}
-                      <h3 className="font-bold text-gray-900 text-xl mb-2 group-hover:text-gray-800 transition-colors">
+                      <h3 className="font-semibold text-gray-900 text-lg mb-1 group-hover:text-gray-800 transition-colors">
                         {service.name}
                       </h3>
                       
                       {/* Service Description */}
-                      <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
+                      <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors">
                         {service.description}
                       </p>
                     </div>
                   </div>
                   
                   {/* Hover Overlay Effect */}
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-                  
-                  {/* Subtle Border Glow on Hover */}
-                  <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-gray-200 transition-all duration-300"></div>
+                  <div className="absolute inset-0 rounded-xl bg-gray-50 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
                 </div>
               );
             })}
