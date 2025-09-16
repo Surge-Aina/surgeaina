@@ -24,7 +24,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <NavLink to="/" className={linkClass} end>Home</NavLink>
             <NavLink to="/about" className={linkClass}>About</NavLink>
-            <NavLink to="/services" className={linkClass} >Services</NavLink>
+            <NavLink to="/solutions" className={linkClass} >Solutions</NavLink>
             <NavLink to="/contact" className={linkClass}>Contact</NavLink>
           </div>
 
