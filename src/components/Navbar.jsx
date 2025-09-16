@@ -24,6 +24,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <NavLink to="/" className={linkClass} end>Home</NavLink>
             <NavLink to="/about" className={linkClass}>About</NavLink>
+            <NavLink to="/services" className={linkClass} >Services</NavLink>
             <NavLink to="/contact" className={linkClass}>Contact</NavLink>
           </div>
 
@@ -45,6 +46,9 @@ export default function Navbar() {
             </NavLink>
             <NavLink to="/about" className={linkClass} onClick={() => setOpen(false)}>
               About
+            </NavLink>
+            <NavLink to="/services" className={linkClass} onClick={() => setOpen(false)}>
+              Services
             </NavLink>
             <NavLink to="/contact" className={linkClass} onClick={() => setOpen(false)}>
               Contact
