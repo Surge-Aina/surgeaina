@@ -47,8 +47,8 @@ export default function Navbar() {
             <NavLink to="/about" className={linkClass} onClick={() => setOpen(false)}>
               About
             </NavLink>
-            <NavLink to="/services" className={linkClass} onClick={() => setOpen(false)}>
-              Services
+            <NavLink to="/solutions" className={linkClass} onClick={() => setOpen(false)}>
+              Solutions
             </NavLink>
             <NavLink to="/contact" className={linkClass} onClick={() => setOpen(false)}>
               Contact

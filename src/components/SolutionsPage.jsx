@@ -1,49 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Code, Smartphone, Zap, Cloud, Shield, TestTube } from 'lucide-react';
+import { Code, Smartphone, Zap, Cloud, Shield, TestTube, X, Check } from 'lucide-react';
 import { Link } from "react-router-dom";
+import { services } from '../data/services'; 
 
 import Navbar from './Navbar';
-export default function SolutionsPage(){
-  // Enhanced services with icons and gradients
-  const services = [
-    { 
-      name: 'Web Development', 
-      icon: Code, 
-      gradient: 'from-blue-500 to-cyan-500', 
-      description: 'Modern websites & web applications built with cutting-edge technologies'
-    },
-    { 
-      name: 'Mobile Application Development', 
-      icon: Smartphone, 
-      gradient: 'from-purple-500 to-pink-500', 
-      description: 'Native iOS & Android apps that deliver exceptional user experiences'
-    },
-    { 
-      name: 'Custom Software Development', 
-      icon: Zap, 
-      gradient: 'from-orange-500 to-red-500', 
-      description: 'Tailored software solutions designed specifically for your business needs'
-    },
-    { 
-      name: 'Cloud Management', 
-      icon: Cloud, 
-      gradient: 'from-green-500 to-blue-500', 
-      description: 'Scalable cloud infrastructure and DevOps solutions for modern businesses'
-    },
-    { 
-      name: 'Technical Support', 
-      icon: Shield, 
-      gradient: 'from-indigo-500 to-purple-500', 
-      description: '24/7 technical assistance and maintenance for your digital systems'
-    },
-    { 
-      name: 'Software Testing', 
-      icon: TestTube, 
-      gradient: 'from-teal-500 to-green-500', 
-      description: 'Comprehensive quality assurance and testing services'
-    }
-  ];
 
+export default function SolutionsPage(){
+  const [showServiceModal, setShowServiceModal] = useState(false);
+  const [selectedService, setSelectedService] = useState('');
+  
+  const handleServiceSelect = (serviceName) => {
+    setSelectedService(serviceName);
+    console.log('Selected:', serviceName);
+  };
+
+  const closeModal = () => {
+    setShowServiceModal(false);
+    setSelectedService('');
+  };
+  
   return(
     <>
      <Navbar/>
@@ -54,15 +29,15 @@ export default function SolutionsPage(){
               Professional Services
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Get expert help for your next project
+             View our Services and click on request proposals to get expert help for your next project
             </p>
           
-            <Link
-                to="/contact"
-                className="bg-slate-900 hover:bg-gray-700 text-white px-8 py-3 rounded-lg font-semibold font-inter transition-colors shadow-lg"
-              >
-            Request Proposals
-              </Link>
+            <button
+              onClick={() => setShowServiceModal(true)}
+              className="bg-slate-900 hover:bg-gray-700 text-white px-8 py-3 rounded-lg font-semibold font-inter transition-colors shadow-lg"
+            >
+              Request Proposals
+            </button>
           </div>
 
           {/* Enhanced Services List */}
@@ -75,25 +50,21 @@ export default function SolutionsPage(){
                   className="group relative bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-[1.01] border border-gray-100"
                 >
                   <div className="flex items-center space-x-4">
-                    {/* Simple Icon */}
                     <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-gray-200 transition-colors duration-300 flex-shrink-0">
                       <Icon className="w-6 h-6 text-gray-600" />
                     </div>
                     
                     <div className="flex-1">
-                      {/* Service Title */}
                       <h3 className="font-semibold text-gray-900 text-lg mb-1 group-hover:text-gray-800 transition-colors">
                         {service.name}
                       </h3>
                       
-                      {/* Service Description */}
                       <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors">
                         {service.description}
                       </p>
                     </div>
                   </div>
                   
-                  {/* Hover Overlay Effect */}
                   <div className="absolute inset-0 rounded-xl bg-gray-50 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
                 </div>
               );
@@ -101,6 +72,83 @@ export default function SolutionsPage(){
           </div>
         </div>
       </div>
+
+      {/* Simple Service Selection Modal */}
+      {showServiceModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+            {/* Modal Header */}
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <div>
+                <h2 className="text-2xl font-bold text-slate-800">Select a Service</h2>
+                <p className="text-slate-600 text-sm">Choose the service you'd like to request a proposal for</p>
+              </div>
+              <button 
+                onClick={closeModal}
+                className="text-slate-400 hover:text-slate-600 transition-colors p-2 hover:bg-slate-100 rounded-lg"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            {/* Modal Content */}
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {services.map((service) => {
+                  const Icon = service.icon;
+                  const isSelected = selectedService === service.name;
+                  
+                  return (
+                    <label key={service.name} className="cursor-pointer block">
+                      <input
+                        type="radio"
+                        name="service"
+                        value={service.name}
+                        checked={isSelected}
+                        onChange={(e) => handleServiceSelect(e.target.value)}
+                        className="sr-only"
+                      />
+                      <div className={`p-4 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${
+                        isSelected 
+                          ? 'border-slate-500 bg-slate-100 shadow-lg ring-2 ring-slate-200' 
+                          : 'border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300'
+                      }`}>
+                        <div className="flex items-start space-x-3">
+                          <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                            isSelected ? 'bg-slate-200' : 'bg-gray-100'
+                          }`}>
+                            <Icon className={`w-5 h-5 ${
+                              isSelected ? 'text-slate-700' : 'text-gray-600'
+                            }`} />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className={`font-medium mb-1 ${
+                              isSelected ? 'text-slate-800' : 'text-gray-800'
+                            }`}>
+                              {service.name}
+                            </h4>
+                            <p className={`text-sm ${
+                              isSelected ? 'text-slate-600' : 'text-gray-600'
+                            }`}>
+                              {service.description}
+                            </p>
+                          </div>
+                          {isSelected && (
+                            <div className="w-5 h-5 bg-slate-600 rounded-full flex items-center justify-center">
+                              <Check className="w-3 h-3 text-white" />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </label>
+                  );
+                })}
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
