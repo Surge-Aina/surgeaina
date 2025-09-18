@@ -24,10 +24,9 @@ export default function SolutionsPage(){
 
   const handleServiceQuestionsComplete = (data) => {
     console.log('Service questions completed:', data);
-    // You can handle the completion here - save data, navigate to contact, etc.
+   
     closeModal();
-    // Optional: Navigate to contact page with the data
-    // navigate('/contact', { state: data });
+    
   };
   
   return(

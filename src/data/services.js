@@ -1,4 +1,4 @@
-import { Code, Smartphone, Zap, Cloud, Shield, TestTube } from 'lucide-react';
+import { Code, Smartphone, Zap, Cloud, Shield, TestTube ,Laptop} from 'lucide-react';
 export const services = [
     { 
       name: 'Web Development', 
@@ -11,6 +11,12 @@ export const services = [
       icon: Smartphone, 
       gradient: 'from-purple-500 to-pink-500', 
       description: 'Native iOS & Android apps that deliver exceptional user experiences'
+    },
+    { 
+      name: 'Application Development', 
+      icon: Laptop, 
+      gradient: 'from-purple-500 to-pink-500', 
+      description: 'Building modern, user-friendly applications from idea to deployment'
     },
     { 
       name: 'Custom Software Development', 

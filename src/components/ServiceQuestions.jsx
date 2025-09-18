@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import WebDevQuestions from './WebDevQuestions';
+import MobileAppQuestions from './MobileAppQuestions';
+import CustomSoftwareQuestions from './CustomSoftwareQuestions';
+import ApplicationDevQuestions from './ApplicationDevQuestions';
+import CloudManagementQuestions from './CloudManagementQuestions';
 
 export default function ServiceQuestions({ selectedService, onBack, onComplete }) {
 const [isSubmitting, setIsSubmitting] = useState(false);  
@@ -36,42 +40,40 @@ const [isSubmitting, setIsSubmitting] = useState(false);
         
   
       case 'Mobile Application Development':
-        // Future: MobileAppQuestions component
         return (
-          <div className="text-center py-12">
-            <h3 className="text-xl font-semibold text-slate-800 mb-4">
-              Mobile App Questions Coming Soon
-            </h3>
-            <p className="text-slate-600 mb-6">
-              Mobile application development questions will be available soon.
-            </p>
-            <button
-              onClick={() => handleContinue({})}
-              className="bg-slate-900 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-            >
-              Continue for now
-            </button>
-          </div>
+         <MobileAppQuestions
+            onContinue={handleContinue}
+            onBack={onBack}
+            isSubmitting={isSubmitting}
+          />
         );
       
       case 'Custom Software Development':
-        // Future: CustomSoftwareQuestions component
         return (
-          <div className="text-center py-12">
-            <h3 className="text-xl font-semibold text-slate-800 mb-4">
-              Custom Software Questions Coming Soon
-            </h3>
-            <p className="text-slate-600 mb-6">
-              Custom software development questions will be available soon.
-            </p>
-            <button
-              onClick={() => handleContinue({})}
-              className="bg-slate-900 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-            >
-              Continue for now
-            </button>
-          </div>
+       <CustomSoftwareQuestions
+        onContinue={handleContinue}
+            onBack={onBack}
+            isSubmitting={isSubmitting}
+          />
         );
+
+        case 'Application Development':
+          return (
+      <ApplicationDevQuestions
+      onContinue={handleContinue}
+      onBack={onBack}
+      isSubmitting={isSubmitting}
+      />
+      );
+
+       case 'Cloud Management':
+          return (
+      <CloudManagementQuestions
+      onContinue={handleContinue}
+      onBack={onBack}
+      isSubmitting={isSubmitting}
+      />
+      );
       
       // Add other services here as needed
       default:
