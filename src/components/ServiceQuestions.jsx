@@ -4,6 +4,9 @@ import MobileAppQuestions from './MobileAppQuestions';
 import CustomSoftwareQuestions from './CustomSoftwareQuestions';
 import ApplicationDevQuestions from './ApplicationDevQuestions';
 import CloudManagementQuestions from './CloudManagementQuestions';
+import TechnicalSupportQuestions from './TechnicalSupportQuestions';
+import CloudApplicationManagementQuestions from './CloudApplicationManagementQuestions';
+import SoftwareTestingQuestions from './SoftwareTestingQuestions';
 
 export default function ServiceQuestions({ selectedService, onBack, onComplete }) {
 const [isSubmitting, setIsSubmitting] = useState(false);  
@@ -74,7 +77,30 @@ const [isSubmitting, setIsSubmitting] = useState(false);
       isSubmitting={isSubmitting}
       />
       );
-      
+        case 'Cloud Application Management':
+  return (
+    <CloudApplicationManagementQuestions
+      onContinue={handleContinue}
+      onBack={onBack}
+      isSubmitting={isSubmitting}
+    />
+  );
+      case 'Technical Support':
+  return (
+    <TechnicalSupportQuestions
+      onContinue={handleContinue}
+      onBack={onBack}
+      isSubmitting={isSubmitting}
+    />
+  );
+  case 'Software Testing':
+  return (
+    <SoftwareTestingQuestions
+      onContinue={handleContinue}
+      onBack={onBack}
+      isSubmitting={isSubmitting}
+    />
+  )
       // Add other services here as needed
       default:
         return (

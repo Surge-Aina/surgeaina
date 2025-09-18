@@ -227,5 +227,115 @@ export const serviceQuestions = {
       'Other'
     ]
   }
+],
+'Technical Support': [
+  {
+    id: 'project_description',
+    type: 'textarea',
+    label: 'Please describe your project and what you need',
+    placeholder: 'Describe your technical support needs...'
+  },
+  {
+    id: 'timeline',
+    type: 'radio',
+    label: 'When would you like this project completed?',
+    options: [
+      'This week',
+      'Within the next two weeks',
+      'Within the next month',
+      'Within the next two months'
+    ]
+  }
+],
+'Cloud Application Management': [
+  {
+    id: 'development_services',
+    type: 'checkbox',
+    label: 'What type of cloud application development services?',
+    options: [
+      'Cloud-enabled application development',
+      'Data management and analytics',
+      'Cloud integration',
+      'App migration',
+      'I\'m not sure',
+      'Other'
+    ]
+  },
+  {
+    id: 'cloud_platform',
+    type: 'checkbox',
+    label: 'What cloud platform are you using?',
+    options: ['Azure', 'Amazon', 'Force.com', 'Google App Engine', 'Other']
+  },
+  {
+    id: 'project_scope',
+    type: 'radio',
+    label: 'What is the scope of this project?',
+    options: ['One time project', 'On-going', 'Other']
+  },
+  {
+    id: 'timeline',
+    type: 'radio',
+    label: 'When do you need this completed by?',
+    options: [
+      'This week',
+      'Within the next two weeks',
+      'Within the next month',
+      'Within the next two months',
+      'Other'
+    ]
+  }
+],
+'Software Testing': [
+  {
+    id: 'operating_system',
+    type: 'checkbox',
+    label: 'What operating system?',
+    options: [
+      'Windows (desktop/mobile)',
+      'MacOS (desktop)',
+      'iOS (iPhone / iPad / iWatch)',
+      'Android (phone / tablet / watch)',
+      'Linux (desktop)',
+      'Other'
+    ]
+  },
+  {
+    id: 'programming_languages',
+    type: 'checkbox',
+    label: 'What programming languages?',
+    options: ['Java', 'Python', 'Ruby', 'Javascript', 'C++', 'C#', 'C', 'Other']
+  },
+  {
+    id: 'lines_of_code',
+    type: 'radio',
+    label: 'Approximately how many lines of code need to be tested?',
+    options: [
+      'Less than 1K',
+      '1K to 5K',
+      '5K to 10K',
+      '10K to 50K',
+      '50K+',
+      'Other'
+    ]
+  },
+  {
+    id: 'project_scope',
+    type: 'radio',
+    label: 'What is the scope of this project?',
+    options: ['One time project', 'On-going', 'Other']
+  },
+  {
+    id: 'timeline',
+    type: 'radio',
+    label: 'When do you need this completed by?',
+    options: [
+      'This week',
+      'Within the next two weeks',
+      'Within the next month',
+      'Within the next two months',
+      'Other'
+    ]
+  }
 ]
 }
