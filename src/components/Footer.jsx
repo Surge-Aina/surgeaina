@@ -17,16 +17,16 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-white text-lg font-medium">Product</h3>
             <div className="space-y-3">
-              <a href="#" className="block text-slate-400 hover:text-white transition-colors text-sm">
+              <a href="https://www.findvirtual.me/occupations" className="block text-slate-400 hover:text-white transition-colors text-sm">
                 Features
               </a>
-              <a href="#" className="block text-slate-400 hover:text-white transition-colors text-sm">
+              <a href="https://www.findvirtual.me/occupations" className="block text-slate-400 hover:text-white transition-colors text-sm">
                 Templates
               </a>
-              <a href="#" className="block text-slate-400 hover:text-white transition-colors text-sm">
+              <a href="https://www.findvirtual.me/payment" className="block text-slate-400 hover:text-white transition-colors text-sm">
                 Pricing
               </a>
-              <a href="https://www.findvirtual.me/portfolios" className="block text-slate-400 hover:text-white transition-colors text-sm">
+              <a href="https://www.findvirtual.me/dashboard" className="block text-slate-400 hover:text-white transition-colors text-sm">
                 Examples
               </a>
             </div>
