@@ -94,7 +94,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      
         <section className="relative max-w-7xl mx-auto px-4 py-16 rounded-xl ml-auto mr-auto shadow-sm">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl  text-slate-800 mb-6 text-center font-inter ml-auto mr-auto">
@@ -234,7 +234,7 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-        </main>
+     
       <Footer/>
     </>
   );

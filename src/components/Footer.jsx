@@ -29,6 +29,7 @@ export default function Footer() {
               <a href="https://www.findvirtual.me/dashboard" className="block text-slate-400 hover:text-white transition-colors text-sm">
                 Examples
               </a>
+              
             </div>
           </div>
 
@@ -38,6 +39,9 @@ export default function Footer() {
             <div className="space-y-3">
               <a href="#" className="block text-slate-400 hover:text-white transition-colors text-sm">
                 Help Center
+              </a>
+              <a href="/contact" className="block text-slate-400 hover:text-white transition-colors text-sm">
+                Careers
               </a>
               <a href="/contact" className="block text-slate-400 hover:text-white transition-colors text-sm">
                 Contact
