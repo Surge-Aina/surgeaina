@@ -7,7 +7,7 @@ const CareerPage = () => {
   return (
     <>
          <ContactPage/>
-         <Footer/>
+         
          </>
   );
 }
