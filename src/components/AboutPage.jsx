@@ -21,7 +21,7 @@ export default function AboutPage() {
                   className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
                 />
               </Link>
-              <h1 className="text-4xl md:text-6xl  tracking-tight font-bold">
+              <h1 className="text-4xl md:text-6xl  tracking-tight font-semibold">
                 Explore Surge Aina
               </h1>
             </div>

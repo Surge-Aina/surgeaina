@@ -94,155 +94,147 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-
-      <main className="min-h-screen bg-gray-50">
-        <section className="relative max-w-7xl mx-auto px-4 py-16 bg-gray-100 rounded-xl shadow-sm">
+      <main className="min-h-screen bg-gray-50 ml-auto mr-auto">
+        <section className="relative max-w-7xl mx-auto px-4 py-16 rounded-xl ml-auto mr-auto shadow-sm">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 text-center font-inter">
+            <h1 className="text-4xl md:text-5xl  text-slate-800 mb-6 text-center font-inter ml-auto mr-auto">
               Enquire About Our Services
             </h1>
-            <div className="w-20 h-1 bg-slate-900 mx-auto mb-6" />
-            <p className="text-lg text-slate-600 text-center mb-12 font-inter">
+            <div className="w-20 h-1 mx-auto mb-2" />
+            <p className="text-lg text-slate-600 text-center mb-6 font-inter">
               We're here to help you begin your journey. Fill out the form below and our team will get back to you shortly.
             </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
-            <div className="md:flex">
-              {/* left column (unchanged) */}
-              <div className="bg-slate-700 text-white rounded-lg p-8 shadow-lg">
-                <div>
-                  <h2 className="text-2xl font-bold mb-6 font-inter">Why Enquire With Us?</h2>
-                  <ul className="space-y-4 text-lg ">
-                    {[
-                      "Expert guidance from industry professionals",
-              
-                    ].map((t) => (
-                      <li key={t} className="flex items-start">
-                        <svg className="h-6 w-6 text-red-200 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span>{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                
-              <br></br>
-              <li className="flex items-start">
-                      <svg className="h-6 w-6 text-red-200 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>
-                        <a 
-                          href="https://www.findvirtual.me" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-cyan-50 hover:text-white text-lg underline transition-colors"
-                        >
-                          Try our feature - FindVirtual.me
-                        </a>
-                      </span>
-                    </li>
-                    <br></br>
+          {/* APPROACH 1: Grid-based with better balance */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Info Section - Takes 1/3 */}
+            <div className="bg-slate-700 text-white rounded-xl p-8 shadow-xl">
+              <h2 className="text-2xl font-bold mb-6 font-inter">Why Enquire With Us?</h2>
+              <ul className="space-y-4">
                 <li className="flex items-start">
-    <svg className="h-6 w-6 text-red-200  mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-    <span>
-      <a 
-        href="https://www.linkedin.com/company/surgeaina/services/request-proposal/?viewAsMember=true" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="text-cyan-50 hover:text-white text-lg underline transition-colors"
-      >
-        Connect with us on LinkedIn for updates
-      </a>
-    </span>
-  </li>
-                <div className="mt-8">
-                  <h3 className="text-lg font-semibold mb-2">Need assistance?</h3>
-                  <p className="text-red-50 mb-2">Call us at +1 5306365748</p>
-                  <p className="text-sm text-red-50">Our team is available 10AM - 6PM, Monday to Saturday</p>
-                </div>
+                  <svg className="h-6 w-6 text-red-200 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-lg">Expert guidance from industry professionals</span>
+                </li>
+                
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-red-200 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>
+                    <a 
+                      href="https://www.findvirtual.me" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-cyan-50 hover:text-white text-lg underline transition-colors"
+                    >
+                      Try our feature - FindVirtual.me
+                    </a>
+                  </span>
+                </li>
+                
+                <li className="flex items-start">
+                  <svg className="h-6 w-6 text-red-200 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>
+                    <a 
+                      href="https://www.linkedin.com/company/surgeaina/services/request-proposal/?viewAsMember=true" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-cyan-50 hover:text-white text-lg underline transition-colors"
+                    >
+                      Connect with us on LinkedIn for updates
+                    </a>
+                  </span>
+                </li>
+              </ul>
+              
+              <div className="mt-8 pt-6 border-t border-slate-600">
+                <h3 className="text-lg font-semibold mb-2">Need assistance?</h3>
+                <p className="text-red-50 mb-2">Call us at +1 5306365748</p>
+                <p className="text-sm text-red-50">Our team is available 10AM - 6PM, Monday to Saturday</p>
               </div>
+            </div>
 
-              {/* right column — form */}
-              <div className="md:w-2/3 p-10">
-                <form className="space-y-6" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                      <input
-                        type="text"
-                        name="fullName"
-                        value={formFields.fullName}
-                        onChange={handleInputChange}
-                        placeholder="John Doe"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-amber-950 focus:border-amber-950"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formFields.email}
-                        onChange={handleInputChange}
-                        placeholder="john@example.com"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-amber-950 focus:border-amber-950"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
-                      <input
-                        type="tel"
-                        name="mobileNumber"
-                        value={formFields.mobileNumber}
-                        onChange={handleInputChange}
-                        placeholder="+91 9876543210"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-amber-950 focus:border-amber-950"
-                      />
-                    </div>
-                  </div>
-
+            {/* Form Section - Takes 2/3 */}
+            <div className="lg:col-span-2 bg-white rounded-xl shadow-xl p-8">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
-                    <textarea
-                      name="message"
-                      rows="4"
-                      value={formFields.message}
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                    <input
+                      type="text"
+                      name="fullName"
+                      value={formFields.fullName}
                       onChange={handleInputChange}
-                      placeholder="Tell us about your interests and goals..."
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-amber-950 focus:border-amber-950"
+                      placeholder="John Doe"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-colors"
                       required
                     />
                   </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formFields.email}
+                      onChange={handleInputChange}
+                      placeholder="john@example.com"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-colors"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Mobile Number</label>
+                    <input
+                      type="tel"
+                      name="mobileNumber"
+                      value={formFields.mobileNumber}
+                      onChange={handleInputChange}
+                      placeholder="+91 9876543210"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-colors"
+                    />
+                  </div>
+                </div>
 
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Your Message</label>
+                  <textarea
+                    name="message"
+                    rows="6"
+                    value={formFields.message}
+                    onChange={handleInputChange}
+                    placeholder="Tell us about your interests and goals..."
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-colors"
+                    required
+                  />
+                </div>
+
+                <div className="flex justify-end pt-4">
                   <button
                     type="submit"
                     disabled={sending}
-                    className="bg-slate-900 hover:bg-gray-700 text-white px-8 py-3 rounded-lg font-semibold font-inter transition-colors shadow-lg"
+                    className="bg-slate-900 hover:bg-slate-700 text-white px-12 py-4 rounded-lg font-semibold font-inter transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     {sending ? "Sending..." : "Submit Enquiry"}
                   </button>
+                </div>
 
-                  {status && status.ok && (
-                    <div className="mt-3 p-3 rounded-xl bg-orange-50 ">
-                      <p className="text-sm font-bold text-black text-center drop-shadow-lg">
-                        🌟 {status.msg} 🌟
-                      </p>
-                    </div>
-                  )}
-                </form>
-              </div>
+                {status && status.ok && (
+                  <div className="mt-6 p-4 rounded-xl bg-green-50 border border-green-200">
+                    <p className="text-sm font-semibold text-green-800 text-center">
+                      ✅ {status.msg}
+                    </p>
+                  </div>
+                )}
+              </form>
             </div>
           </div>
         </section>
-      </main>
+        </main>
       <Footer/>
     </>
   );

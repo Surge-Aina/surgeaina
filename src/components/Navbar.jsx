@@ -25,9 +25,7 @@ export default function Navbar() {
             <NavLink to="/" className={linkClass} end>Home</NavLink>
             <NavLink to="/about" className={linkClass}>About</NavLink>
             <NavLink to="/solutions" className={linkClass} >Solutions</NavLink>
-             <NavLink to="/career" className={linkClass} onClick={() => setOpen(false)}>
-              Careers
-            </NavLink>
+    
             <NavLink to="/contact" className={linkClass}>Contact</NavLink>
           </div>
 
@@ -53,9 +51,7 @@ export default function Navbar() {
             <NavLink to="/solutions" className={linkClass} onClick={() => setOpen(false)}>
               Solutions
             </NavLink>
-            <NavLink to="/career" className={linkClass} onClick={() => setOpen(false)}>
-              Careers
-            </NavLink>
+            
             <NavLink to="/contact" className={linkClass} onClick={() => setOpen(false)}>
               Contact
             </NavLink>
