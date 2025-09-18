@@ -5,6 +5,7 @@ import { services } from '../data/services';
 import ServiceQuestions from '../components/ServiceQuestions';
 
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 export default function SolutionsPage(){
   const [showServiceModal, setShowServiceModal] = useState(false);
@@ -194,6 +195,7 @@ export default function SolutionsPage(){
           </div>
         </div>
       )}
+      <Footer/>
     </>
   )
 }

@@ -1,8 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route , Navigate} from "react-router-dom";
 
 import HomePage from "./components/HomePage";
 import AboutPage from "./components/AboutPage";
 import ContactPage from "./components/ContactPage";
+import CareerPage from "./components/CareerPage";
 import SolutionsPage from "./components/SolutionsPage";
 export default function App() {
   return (
@@ -11,7 +12,9 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/solutions" element={<SolutionsPage />} />
-         <Route path="/contact" element={<ContactPage />} /> 
+                <Route path="/career" element={<CareerPage />} />
+
+ <Route path="/contact" element={<ContactPage />} /> 
       </Routes>
     </Router>
   );

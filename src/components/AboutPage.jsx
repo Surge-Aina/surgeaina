@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "./Footer";
 
 export default function AboutPage() {
   return (
@@ -126,6 +127,7 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
+      <Footer/>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import Navbar from "../components/Navbar";
+import Footer from "./Footer";
 
 export default function ContactPage() {
   const [sending, setSending] = useState(false);
@@ -242,6 +243,7 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
+      <Footer/>
     </>
   );
 }
