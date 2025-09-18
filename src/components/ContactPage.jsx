@@ -94,7 +94,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gray-50 ml-auto mr-auto">
+      <main className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <section className="relative max-w-7xl mx-auto px-4 py-16 rounded-xl ml-auto mr-auto shadow-sm">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl  text-slate-800 mb-6 text-center font-inter ml-auto mr-auto">
@@ -194,7 +194,7 @@ export default function ContactPage() {
                       name="mobileNumber"
                       value={formFields.mobileNumber}
                       onChange={handleInputChange}
-                      placeholder="+91 9876543210"
+                      placeholder="+1 9876543210"
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-colors"
                     />
                   </div>
