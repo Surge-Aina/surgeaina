@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import WebDevQuestions from './WebDevQuestions';
 import MobileAppQuestions from './MobileAppQuestions';
 import CustomSoftwareQuestions from './CustomSoftwareQuestions';
@@ -11,22 +12,53 @@ import SoftwareTestingQuestions from './SoftwareTestingQuestions';
 export default function ServiceQuestions({ selectedService, onBack, onComplete }) {
 const [isSubmitting, setIsSubmitting] = useState(false);  
 
-  const handleContinue = (answers) => {
+
+ const formatFormResponses = (answers) => {
+    let formatted = '';
+    for (const [key, value] of Object.entries(answers)) {
+      if (key !== 'additionalDetails' && key !== 'shareWithProviders') {
+        const displayKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        const displayValue = Array.isArray(value) ? value.join(', ') : value;
+        formatted += `${displayKey}: ${displayValue}\n`;
+      }
+    }
+    return formatted;
+  };
+  const handleContinue = async (answers) => {
     setIsSubmitting(true);
-    const submissionData = {
-    service: selectedService,
-    answers: answers,
-    submittedAt: new Date().toISOString()
+    
+    try {
+      const emailData = {
+        service_name: selectedService,
+        submission_date: new Date().toLocaleString(),
+        form_responses: formatFormResponses(answers),
+        additional_details: answers.additionalDetails || 'None provided',
+        share_providers: answers.shareWithProviders ? 'Yes' : 'No'
+      };
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_SERVICE_ID,
+        emailData,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      alert('Request submitted successfully! We\'ll get back to you soon.');
+      
+      if (onComplete) {
+        onComplete({
+          service: selectedService,
+          answers: answers
+        });
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('Error submitting request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  // Just log it to console for now
-  console.log('Form submitted:', submissionData);
-  alert('Request submitted! (Check console for data)');
-  
-  if (onComplete) {
-    onComplete(submissionData);
-  }
-  };
 
 
   // Render the appropriate questions component based on selected service

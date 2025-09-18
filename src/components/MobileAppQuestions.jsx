@@ -9,7 +9,10 @@ export default function MobileAppQuestions({ onContinue }) {
     platform: [],              
     development_stage: '',      
     project_scope: '',
-    timeline: ''
+    timeline: '',
+    // Add contact fields
+    contact_name: '',
+    contact_email: ''
   });
 
   const questions = serviceQuestions['Mobile Application Development'];
@@ -35,6 +38,13 @@ export default function MobileAppQuestions({ onContinue }) {
     });
   };
 
+  const handleInputChange = (questionId, value) => {
+    setAnswers(prev => ({
+      ...prev,
+      [questionId]: value
+    }));
+  };
+
   const canProceedFromStep1 = () => {
     return answers.platform && answers.platform.length > 0;  
   };
@@ -48,6 +58,14 @@ export default function MobileAppQuestions({ onContinue }) {
   const canProceedFromStep3 = () => {
     const hasTimelineAnswer = answers.timeline && answers.timeline !== '';
     return hasTimelineAnswer;
+  };
+
+  const canProceedFromStep4 = () => {
+    const hasName = answers.contact_name && answers.contact_name.trim().length > 0;
+    const hasEmail = answers.contact_email && answers.contact_email.trim().length > 0;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValidEmail = emailRegex.test(answers.contact_email);
+    return hasName && hasEmail && isValidEmail;
   };
 
   const handleStep1Continue = () => {
@@ -64,7 +82,13 @@ export default function MobileAppQuestions({ onContinue }) {
 
   const handleStep3Continue = () => {
     if (canProceedFromStep3()) {
-      setCurrentQuestionStep(4); // Go to Additional Details
+      setCurrentQuestionStep(4); // Go to Contact Information
+    }
+  };
+
+  const handleStep4Continue = () => {
+    if (canProceedFromStep4()) {
+      setCurrentQuestionStep(5); // Go to Additional Details
     }
   };
 
@@ -89,14 +113,96 @@ export default function MobileAppQuestions({ onContinue }) {
     );
   }
 
-  // Step 4: Additional Details Component
-  if (currentQuestionStep === 4) {
+  // Step 5: Additional Details Component
+  if (currentQuestionStep === 5) {
     return (
       <AdditionalDetails
         serviceName="Mobile Application Development"
-        onBack={() => setCurrentQuestionStep(3)}
+        onBack={() => setCurrentQuestionStep(4)}
         onContinue={handleAdditionalDetailsContinue}
       />
+    );
+  }
+
+  // Step 4: Contact Information
+  if (currentQuestionStep === 4) {
+    return (
+      <div className="space-y-8">
+        {/* Header */}
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-slate-800 mb-2">
+            Contact Information
+          </h3>
+          <p className="text-slate-600">
+            Please provide your contact details
+          </p>
+          <div className="text-sm text-gray-500 mt-2">
+            Step 4 of 5
+          </div>
+        </div>
+
+        {/* Name Field */}
+        <div className="space-y-4">
+          <h4 className="text-lg font-semibold text-slate-800">
+            Full Name <span className="text-red-500">*</span>
+          </h4>
+          
+          <input
+            type="text"
+            value={answers.contact_name}
+            onChange={(e) => handleInputChange('contact_name', e.target.value)}
+            placeholder="Enter your full name"
+            className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-slate-500 focus:outline-none transition-colors"
+          />
+        </div>
+
+        {/* Email Field */}
+        <div className="space-y-4">
+          <h4 className="text-lg font-semibold text-slate-800">
+            Email Address <span className="text-red-500">*</span>
+          </h4>
+          
+          <input
+            type="email"
+            value={answers.contact_email}
+            onChange={(e) => handleInputChange('contact_email', e.target.value)}
+            placeholder="Enter your email address"
+            className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-slate-500 focus:outline-none transition-colors"
+          />
+          {answers.contact_email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(answers.contact_email) && (
+            <p className="text-sm text-red-500">Please enter a valid email address</p>
+          )}
+        </div>
+
+        {/* Navigation Buttons */}
+        <div className="border-t border-gray-200 pt-6">
+          <div className="flex justify-between items-center">
+            <button
+              onClick={() => setCurrentQuestionStep(3)}
+              className="inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5 mr-2" />
+              Back
+            </button>
+
+            <div className="text-center">
+              <button
+                onClick={handleStep4Continue}
+                disabled={!canProceedFromStep4()}
+                className="inline-flex items-center bg-slate-900 hover:bg-slate-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Continue
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              <p className="text-sm text-gray-500 mt-2">
+                {canProceedFromStep4() ? 'Ready to continue' : 'Please fill out name and valid email'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -114,6 +220,9 @@ export default function MobileAppQuestions({ onContinue }) {
           <p className="text-slate-600">
             What type of mobile application development do you need?
           </p>
+          <div className="text-sm text-gray-500 mt-2">
+            Step 1 of 5
+          </div>
         </div>
 
         {/* First Question */}
@@ -214,6 +323,9 @@ export default function MobileAppQuestions({ onContinue }) {
             <p className="text-slate-600 text-sm">
               Tell us more about your project
             </p>
+            <div className="text-sm text-gray-500 mt-1">
+              Step 2 of 5
+            </div>
           </div>
         </div>
 
@@ -333,6 +445,9 @@ export default function MobileAppQuestions({ onContinue }) {
             <p className="text-slate-600 text-sm">
               When do you need this completed?
             </p>
+            <div className="text-sm text-gray-500 mt-1">
+              Step 3 of 5
+            </div>
           </div>
         </div>
 
