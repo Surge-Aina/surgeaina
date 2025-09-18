@@ -24,41 +24,60 @@ const [isSubmitting, setIsSubmitting] = useState(false);
     }
     return formatted;
   };
-  const handleContinue = async (answers) => {
-    setIsSubmitting(true);
-    
-    try {
-      const emailData = {
-        service_name: selectedService,
-        submission_date: new Date().toLocaleString(),
-        form_responses: formatFormResponses(answers),
-        additional_details: answers.additionalDetails || 'None provided',
-        share_providers: answers.shareWithProviders ? 'Yes' : 'No'
-      };
+ const handleContinue = async (answers) => {
+  setIsSubmitting(true);
+  try {
+    const userEmail =
+      (answers?.email || answers?.contact_email || answers?.user_email || '').trim();
 
+    const emailData = {
+      service_name: selectedService,
+      submission_date: new Date().toLocaleString(),
+      form_responses: formatFormResponses(answers),
+      additional_details: answers?.additionalDetails || 'None provided',
+      share_providers: answers?.shareWithProviders ? 'Yes' : 'No',
+
+      // fields used by templates
+      user_email: userEmail,
+      user_name: answers?.fullName || answers?.name || 'Customer',
+      company_name: 'Surge Aina',
+
+      // for company template Reply-To if it expects {{email}} or {{reply_to}}
+      email: userEmail,
+      reply_to: userEmail,
+    };
+
+    // 1) company email (your existing template)
+    await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_SERVICE_ID,
+      emailData,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    );
+
+    // 2) user confirmation (only if we have a recipient)
+    if (userEmail) {
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_SERVICE_ID,
-        emailData,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_USER_SERVICE_ID,
+        {
+          ...emailData, // includes user_email for your template's To Email: {{user_email}}
+        },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
-
-      alert('Request submitted successfully! We\'ll get back to you soon.');
-      
-      if (onComplete) {
-        onComplete({
-          service: selectedService,
-          answers: answers
-        });
-      }
-    } catch (error) {
-      console.error('Error sending email:', error);
-      alert('Error submitting request. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      console.warn('No user email found in answers; skipping user confirmation email.');
     }
-  };
 
+    alert("Request submitted successfully! We've emailed you a confirmation.");
+    onComplete?.({ service: selectedService, answers });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    alert('Error submitting request. Please try again.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
 
   // Render the appropriate questions component based on selected service
