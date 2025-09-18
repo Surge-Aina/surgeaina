@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Code, Smartphone, Zap, Cloud, Shield, TestTube, X, Check } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { services } from '../data/services'; 
+import ServiceQuestions from '../components/ServiceQuestions';
 
 import Navbar from './Navbar';
 
 export default function SolutionsPage(){
   const [showServiceModal, setShowServiceModal] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
   const [selectedService, setSelectedService] = useState('');
   
   const handleServiceSelect = (serviceName) => {
@@ -17,6 +19,15 @@ export default function SolutionsPage(){
   const closeModal = () => {
     setShowServiceModal(false);
     setSelectedService('');
+    setCurrentStep(1); // Reset to first step
+  };
+
+  const handleServiceQuestionsComplete = (data) => {
+    console.log('Service questions completed:', data);
+    // You can handle the completion here - save data, navigate to contact, etc.
+    closeModal();
+    // Optional: Navigate to contact page with the data
+    // navigate('/contact', { state: data });
   };
   
   return(
@@ -73,15 +84,22 @@ export default function SolutionsPage(){
         </div>
       </div>
 
-      {/* Simple Service Selection Modal */}
+      {/* Multi-step Service Selection Modal */}
       {showServiceModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             {/* Modal Header */}
             <div className="flex justify-between items-center p-6 border-b border-gray-200">
               <div>
-                <h2 className="text-2xl font-bold text-slate-800">Select a Service</h2>
-                <p className="text-slate-600 text-sm">Choose the service you'd like to request a proposal for</p>
+                <h2 className="text-2xl font-bold text-slate-800">
+                  {currentStep === 1 ? 'Select a Service' : `${selectedService} Details`}
+                </h2>
+                <p className="text-slate-600 text-sm">
+                  {currentStep === 1 
+                    ? 'Choose the service you\'d like to request a proposal for'
+                    : `Step ${currentStep} of 2`
+                  }
+                </p>
               </div>
               <button 
                 onClick={closeModal}
@@ -93,58 +111,86 @@ export default function SolutionsPage(){
             
             {/* Modal Content */}
             <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {services.map((service) => {
-                  const Icon = service.icon;
-                  const isSelected = selectedService === service.name;
-                  
-                  return (
-                    <label key={service.name} className="cursor-pointer block">
-                      <input
-                        type="radio"
-                        name="service"
-                        value={service.name}
-                        checked={isSelected}
-                        onChange={(e) => handleServiceSelect(e.target.value)}
-                        className="sr-only"
-                      />
-                      <div className={`p-4 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${
-                        isSelected 
-                          ? 'border-slate-500 bg-slate-100 shadow-lg ring-2 ring-slate-200' 
-                          : 'border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300'
-                      }`}>
-                        <div className="flex items-start space-x-3">
-                          <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                            isSelected ? 'bg-slate-200' : 'bg-gray-100'
+              {/* Step 1: Service Selection */}
+              {currentStep === 1 && (
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {services.map((service) => {
+                      const Icon = service.icon;
+                      const isSelected = selectedService === service.name;
+                      
+                      return (
+                        <label key={service.name} className="cursor-pointer block">
+                          <input
+                            type="radio"
+                            name="service"
+                            value={service.name}
+                            checked={isSelected}
+                            onChange={(e) => handleServiceSelect(e.target.value)}
+                            className="sr-only"
+                          />
+                          <div className={`p-4 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${
+                            isSelected 
+                              ? 'border-slate-500 bg-slate-100 shadow-lg ring-2 ring-slate-200' 
+                              : 'border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300'
                           }`}>
-                            <Icon className={`w-5 h-5 ${
-                              isSelected ? 'text-slate-700' : 'text-gray-600'
-                            }`} />
-                          </div>
-                          <div className="flex-1">
-                            <h4 className={`font-medium mb-1 ${
-                              isSelected ? 'text-slate-800' : 'text-gray-800'
-                            }`}>
-                              {service.name}
-                            </h4>
-                            <p className={`text-sm ${
-                              isSelected ? 'text-slate-600' : 'text-gray-600'
-                            }`}>
-                              {service.description}
-                            </p>
-                          </div>
-                          {isSelected && (
-                            <div className="w-5 h-5 bg-slate-600 rounded-full flex items-center justify-center">
-                              <Check className="w-3 h-3 text-white" />
+                            <div className="flex items-start space-x-3">
+                              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                                isSelected ? 'bg-slate-200' : 'bg-gray-100'
+                              }`}>
+                                <Icon className={`w-5 h-5 ${
+                                  isSelected ? 'text-slate-700' : 'text-gray-600'
+                                }`} />
+                              </div>
+                              <div className="flex-1">
+                                <h4 className={`font-medium mb-1 ${
+                                  isSelected ? 'text-slate-800' : 'text-gray-800'
+                                }`}>
+                                  {service.name}
+                                </h4>
+                                <p className={`text-sm ${
+                                  isSelected ? 'text-slate-600' : 'text-gray-600'
+                                }`}>
+                                  {service.description}
+                                </p>
+                              </div>
+                              {isSelected && (
+                                <div className="w-5 h-5 bg-slate-600 rounded-full flex items-center justify-center">
+                                  <Check className="w-3 h-3 text-white" />
+                                </div>
+                              )}
                             </div>
-                          )}
-                        </div>
-                      </div>
-                    </label>
-                  );
-                })}
-              </div>
+                          </div>
+                        </label>
+                      );
+                    })}
+                  </div>
 
+                  {/* Continue Button - Shows when service is selected */}
+                 {selectedService && (
+  <div className="mt-6 flex justify-end">
+    <button
+      onClick={() => setCurrentStep(2)}
+      className="inline-flex items-center bg-slate-900 hover:bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors text-sm"
+    >
+      Continue
+      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+)}
+                </div>
+              )}
+
+              {/* Step 2: Service-specific Questions */}
+              {currentStep === 2 && (
+                <ServiceQuestions 
+                  selectedService={selectedService}
+                  onBack={() => setCurrentStep(1)}
+                  onComplete={handleServiceQuestionsComplete}
+                />
+              )}
             </div>
           </div>
         </div>
