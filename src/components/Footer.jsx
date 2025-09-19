@@ -6,7 +6,7 @@ export default function Footer() {
           
           {/* Company Section */}
           <div className="space-y-4">
-            <h3 className="text-white text-lg font-medium">FindVirtual.me</h3>
+            <h3 className="text-white text-lg font-medium">Surge Aina</h3>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
               Empowering creators worldwide to showcase their work beautifully. 
               Build stunning portfolios that stand out from the crowd.
@@ -60,7 +60,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-slate-700 mt-12 pt-8">
           <p className="text-center text-slate-400 text-sm">
-            © 2025 FindVirtual.me. All rights reserved.
+            © Surge Aina. All rights reserved.
           </p>
         </div>
       </div>

@@ -95,19 +95,19 @@ export default function ContactPage() {
     <>
       <Navbar />
       
-        <section className="relative max-w-7xl mx-auto px-4 py-16 rounded-xl ml-auto mr-auto shadow-sm">
+        <section className="relative max-w-7xl mx-auto px-4 py-16 rounded-xl ml-auto mr-auto ">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl  text-slate-800 mb-6 text-center font-inter ml-auto mr-auto">
+            <h1 className="text-4xl md:text-5xl  text-slate-800 mb-6 text-center font-inter ml-32">
               Enquire About Our Services
             </h1>
             <div className="w-20 h-1 mx-auto mb-2" />
-            <p className="text-lg text-slate-600 text-center mb-6 font-inter">
+            <p className="text-lg text-slate-600 text-center mb-6 font-inter ml-44">
               We're here to help you begin your journey. Fill out the form below and our team will get back to you shortly.
             </p>
           </div>
 
           {/* APPROACH 1: Grid-based with better balance */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl ml-40 mr-auto mx-auto">
             {/* Info Section - Takes 1/3 */}
             <div className="bg-slate-700 text-white rounded-xl p-8 shadow-xl">
               <h2 className="text-2xl font-bold mb-6 font-inter">Why Enquire With Us?</h2>
@@ -155,7 +155,7 @@ export default function ContactPage() {
               <div className="mt-8 pt-6 border-t border-slate-600">
                 <h3 className="text-lg font-semibold mb-2">Need assistance?</h3>
                 <p className="text-red-50 mb-2">Call us at +1 5306365748</p>
-                <p className="text-sm text-red-50">Our team is available 10AM - 6PM, Monday to Saturday</p>
+                <p className="text-sm text-red-50">Our team is available 9AM - 7PM, Sunday to Friday</p>
               </div>
             </div>
 
