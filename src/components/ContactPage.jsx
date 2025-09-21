@@ -15,10 +15,10 @@ export default function ContactPage() {
     mobileNumber: ''
   });
 
-  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-  const USER_TEMPLATE_ID= import.meta.env.VITE_EMAILJS_USER_TEMPLATE_ID
+  const SERVICE_ID = import.meta.env.VITE_FORM_SERVICE_ID;
+  const TEMPLATE_ID = import.meta.env.VITE_FORM_COMPANY_TID;
+  const PUBLIC_KEY = import.meta.env.VITE_FORM_PUBLIC_KEY;
+  const USER_TEMPLATE_ID= import.meta.env.VITE_FORM_USER_TID
   
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +49,7 @@ export default function ContactPage() {
   try {
     // EMAIL 1: To the company 
     const companyParams = {
+      is_surge_aina: true,
       ...commonData,
       to_email: "your-company@example.com",  // Your company email
       email: fd.get("email"),  // User's email (for reply-to)
@@ -63,6 +64,7 @@ export default function ContactPage() {
     
     // EMAIL 2: To user (confirmation )
     const userParams = {
+      is_surge_aina: true,
       ...commonData,
       to_email: fd.get("email"),     // User's email
       email: fd.get("email"),        // User's email
