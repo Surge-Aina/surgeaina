@@ -59,7 +59,7 @@ export default function ContactPage() {
       SERVICE_ID, 
       TEMPLATE_ID,           
       companyParams, 
-      { publicKey: PUBLIC_KEY }
+    PUBLIC_KEY 
     );
     
     // EMAIL 2: To user (confirmation )
@@ -74,7 +74,7 @@ export default function ContactPage() {
       SERVICE_ID, 
       USER_TEMPLATE_ID,      // User template: "Your message received"
       userParams, 
-      { publicKey: PUBLIC_KEY }
+      PUBLIC_KEY 
     );
     
     setStatus({ 
