@@ -49,7 +49,7 @@ export default function ContactPage() {
   try {
     // EMAIL 1: To the company 
     const companyParams = {
-      is_surge_aina: true,
+     
       ...commonData,
       to_email: "your-company@example.com",  // Your company email
       email: fd.get("email"),  // User's email (for reply-to)
@@ -64,12 +64,24 @@ export default function ContactPage() {
     
     // EMAIL 2: To user (confirmation )
     const userParams = {
-      is_surge_aina: true,
-      ...commonData,
-      to_email: fd.get("email"),     // User's email
-      email: fd.get("email"),        // User's email
-    };
-    
+      
+  name: fd.get("fullName"),
+  user_email: fd.get("email"),
+  team_name: "The Surge Team",
+  custom_message: `Thank you for contacting Surge Aina! We have received your message and will get back to you soon.
+
+Here's what you sent us:
+Name: ${fd.get("fullName")}
+Email: ${fd.get("email")}
+Phone: ${fd.get("mobileNumber") || "Not provided"}
+Message: ${fd.get("message")}
+Submitted: ${new Date().toLocaleString()}
+
+Our team will respond soon.`,
+  to_email: fd.get("email"),
+};
+    console.log("User params:", userParams);
+
     await emailjs.send(
       SERVICE_ID, 
       USER_TEMPLATE_ID,      // User template: "Your message received"
