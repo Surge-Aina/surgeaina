@@ -117,7 +117,7 @@ Our team will respond soon.`,
     <>
       <Navbar />
       
-        <section className="relative max-w-7xl mx-auto px-4 py-16 rounded-xl ml-auto mr-auto ">
+        <section className="relative max-w-7xl mx-auto px-4 py-16 rounded-xl ml-72  mr-auto ">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl  text-slate-800 mb-6 text-center font-inter ml-32">
               Enquire About Our Services
