@@ -48,12 +48,20 @@ export default function ContactPage() {
 
   try {
     // EMAIL 1: To the company 
-    const companyParams = {
-     
-      ...commonData,
-      to_email: "your-company@example.com",  // Your company email
-      email: fd.get("email"),  // User's email (for reply-to)
-    };
+   const companyParams = {
+  ...commonData,
+  to_email: "your-company@example.com",
+  email: fd.get("email"),
+  company_message: `Contact Us: ${commonData.title}
+
+A message by ${fd.get("fullName")} has been received. Kindly respond at your earliest convenience.
+
+Name: ${fd.get("fullName")}
+Email: ${fd.get("email")}
+Phone: ${fd.get("mobileNumber") || "Not provided"}
+Message: ${fd.get("message")}
+Submitted: ${new Date().toLocaleString()}`
+};
     
     await emailjs.send(
       SERVICE_ID, 
