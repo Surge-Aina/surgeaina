@@ -8,7 +8,10 @@ const serviceRequestRoutes = require('./routes/serviceRequestRoutes');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'http://localhost:3000', 'https://surgeaina.com', 'http://surgeaina.com'],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
