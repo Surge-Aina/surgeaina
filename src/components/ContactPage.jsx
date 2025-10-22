@@ -1,5 +1,5 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
 import Navbar from "../components/Navbar";
 import Footer from "./Footer";
 
@@ -15,11 +15,11 @@ export default function ContactPage() {
     mobileNumber: ''
   });
 
-  const SERVICE_ID = import.meta.env.VITE_FORM_SERVICE_ID;
-  const TEMPLATE_ID = import.meta.env.VITE_FORM_COMPANY_TID;
-  const PUBLIC_KEY = import.meta.env.VITE_FORM_PUBLIC_KEY;
-  const USER_TEMPLATE_ID= import.meta.env.VITE_FORM_USER_TID
-  
+  // const SERVICE_ID = import.meta.env.VITE_FORM_SERVICE_ID;
+  // const TEMPLATE_ID = import.meta.env.VITE_FORM_COMPANY_TID;
+  // const PUBLIC_KEY = import.meta.env.VITE_FORM_PUBLIC_KEY;
+  // const USER_TEMPLATE_ID= import.meta.env.VITE_FORM_USER_TID
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormFields(prev => ({
@@ -28,91 +28,56 @@ export default function ContactPage() {
     }));
   };
 
-  async function handleSubmit(e) {
-  e.preventDefault();
-  setSending(true);
-  setStatus(null);
 
-  const form = e.currentTarget;
-  const fd = new FormData(form);
+ async function handleSubmit(e) {
+    e.preventDefault();
+    setSending(true);
+    setStatus(null);
 
-  // Common data
-  const commonData = {
-    name: fd.get("fullName"),              
-    user_email: fd.get("email"),                
-    message: fd.get("message"),            
-    mobile: fd.get("mobileNumber") || "",  
-    title: "Surge Aina Enquiry",          
-    time: new Date().toLocaleString(),    
-  };
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formFields.fullName,
+          email: formFields.email,
+          mobileNumber: formFields.mobileNumber,
+          message: formFields.message
+        })
+      });
 
-  try {
-    // EMAIL 1: To the company 
-   const companyParams = {
-  ...commonData,
-  to_email: "your-company@example.com",
-  email: fd.get("email"),
-  company_message: `Contact Us: ${commonData.title}
+      const data = await response.json();
 
-A message by ${fd.get("fullName")} has been received. Kindly respond at your earliest convenience.
-
-Name: ${fd.get("fullName")}
-Email: ${fd.get("email")}
-Phone: ${fd.get("mobileNumber") || "Not provided"}
-Message: ${fd.get("message")}
-Submitted: ${new Date().toLocaleString()}`
-};
-    
-    await emailjs.send(
-      SERVICE_ID, 
-      TEMPLATE_ID,           
-      companyParams, 
-    PUBLIC_KEY 
-    );
-    
-    // EMAIL 2: To user (confirmation )
-    const userParams = {
-      
-  name: fd.get("fullName"),
-  user_email: fd.get("email"),
-  team_name: "The Surge Team",
-  custom_message: `Thank you for contacting Surge Aina! We have received your message and will get back to you soon.
-
-Here's what you sent us:
-Name: ${fd.get("fullName")}
-Email: ${fd.get("email")}
-Phone: ${fd.get("mobileNumber") || "Not provided"}
-Message: ${fd.get("message")}
-Submitted: ${new Date().toLocaleString()}
-
-Our team will respond soon.`,
-  to_email: fd.get("email"),
-};
-    console.log("User params:", userParams);
-
-    await emailjs.send(
-      SERVICE_ID, 
-      USER_TEMPLATE_ID,      // User template: "Your message received"
-      userParams, 
-      PUBLIC_KEY 
-    );
-    
-    setStatus({ 
-      ok: true, 
-      msg: "Message sent! Please check your email for confirmation." 
-    });
-    form.reset();
-    
-  } catch (err) {
-    console.error(err);
-    setStatus({ 
-      ok: false, 
-      msg: "Failed to send. Please try again." 
-    });
-  } finally {
-    setSending(false);
+      if (response.ok && data.success) {
+        setStatus({ 
+          ok: true, 
+          msg: "Message sent! Please check your email for confirmation." 
+        });
+        setFormFields({
+          fullName: '',
+          email: '',
+          message: '',
+          mobileNumber: ''
+        });
+      } else {
+        setStatus({ 
+          ok: false, 
+          msg: data.message || "Failed to send. Please try again." 
+        });
+      }
+    } catch (err) {
+      console.error('Error:', err);
+      setStatus({ 
+        ok: false, 
+        msg: "Failed to send. Please try again." 
+      });
+    } finally {
+      setSending(false);
+    }
   }
-}
+ 
   return (
     <>
       <Navbar />
@@ -245,13 +210,13 @@ Our team will respond soon.`,
                   </button>
                 </div>
 
-                {status && status.ok && (
-                  <div className="mt-6 p-4 rounded-xl bg-green-50 border border-green-200">
-                    <p className="text-sm font-semibold text-green-800 text-center">
-                      ✅ {status.msg}
-                    </p>
-                  </div>
-                )}
+            {status && (
+  <div className={`mt-6 p-4 rounded-xl ${status.ok ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+    <p className={`text-sm font-semibold text-center ${status.ok ? 'text-green-800' : 'text-red-800'}`}>
+      {status.ok ? '✅' : '❌'} {status.msg}
+    </p>
+  </div>
+)}
               </form>
             </div>
           </div>
