@@ -104,7 +104,7 @@ const handleContinue = async (answers) => {
     };
     
     // Send to backend
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'}/api/service-request`, {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/service-request`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

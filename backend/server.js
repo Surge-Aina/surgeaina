@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI)
     console.log('✅ Connected to MongoDB');
     
     // Start server
-    const PORT = process.env.PORT || 5000;
+    const PORT = process.env.PORT || 5001;
     app.listen(PORT, () => {
       console.log(`🚀 Surge Aina backend running on port ${PORT}`);
     });
